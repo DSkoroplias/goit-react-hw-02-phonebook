@@ -5,13 +5,11 @@ import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import ContactFilter from './ContactFilter/ContactFilter';
 
-import items from './items.js';
-
 import styles from './app.module.scss';
 
 class App extends Component {
   state = {
-    contacts: [...items],
+    contacts: [],
     filter: '',
   };
 
@@ -23,13 +21,11 @@ class App extends Component {
 
     this.setState(prevState => {
       const { contacts } = prevState;
-
       const newContact = {
         id: nanoid(),
         name,
         number,
       };
-
       return { contacts: [newContact, ...contacts] };
     });
     return true;
@@ -70,7 +66,6 @@ class App extends Component {
 
   render() {
     const { addContact, handleFilter, removeContact } = this;
-
     const contacts = this.getFilteredContact();
 
     return (
