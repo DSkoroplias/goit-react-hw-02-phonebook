@@ -27,5 +27,11 @@ ContactList.defaultProps = {
 
 ContactList.propTypes = {
   removeContact: PropTypes.func.isRequired,
-  contacts: PropTypes.arrayOf(PropTypes.string).isRequired,
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
 };
