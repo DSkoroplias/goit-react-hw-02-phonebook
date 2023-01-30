@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types';
 
+import ContactListEl from '../ContactListEl/ContactListEl';
+
 import styles from './contact-list.module.scss';
 
 const ContactList = ({ removeContact, contacts }) => {
-  const contact = contacts.map(({ id, name, number }) => (
-    <li key={id}>
-      {name}: {number}
-      <button onClick={() => removeContact(id)} type="button">
-        Delete
-      </button>
-    </li>
-  ));
-
   return (
     <div className={styles.contacts}>
-      <ul>{contact}</ul>
+      {contacts.map(({ id, name, number }) => (
+        <ContactListEl
+          key={id}
+          name={name}
+          number={number}
+          removeContact={() => removeContact(id)}
+        />
+      ))}
     </div>
   );
 };
